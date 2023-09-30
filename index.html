@@ -1,7 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Geburtstagsalter-Rechner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="date"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 20px;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Geburtstagsalter-Rechner</h1>
@@ -10,10 +55,10 @@
         <input type="date" id="birthdate">
         <button id="calculateButton" onclick="calculateAge()">Berechnen</button>
     </form>
-    <p id="result" style="display: none;">Dein Alter ist: <span id="age">0.00000000</span></p>
+    <p id="result">Dein Alter ist: <span id="age">0.00000000</span></p>
 
     <script>
-        var intervalId; // Globale Variable, um das Intervall zu speichern
+        var intervalId;
 
         function calculateAge() {
             var birthdate = new Date(document.getElementById("birthdate").value);
@@ -23,13 +68,11 @@
                 var ageInMilliseconds = currentDate - birthdate;
                 var ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
                 ageSpan.textContent = ageInYears.toFixed(8);
-            }, 1000); // Aktualisieren Sie das Alter alle 1000 Millisekunden (1 Sekunde)
+            }, 1000);
 
-            // Formular ausblenden
             var form = document.getElementById("ageCalculatorForm");
             form.style.display = "none";
 
-            // Ergebnis anzeigen
             var result = document.getElementById("result");
             result.style.display = "block";
         }
