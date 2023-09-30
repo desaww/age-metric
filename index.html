@@ -36,6 +36,8 @@
         input[type="date"] {
             padding: 5px;
             font-size: 16px;
+            border: none; /* Remove the border */
+            outline: none; /* Remove the outline */
         }
 
         button {
@@ -73,7 +75,7 @@
             intervalId = setInterval(function () {
                 var currentDate = new Date();
                 var ageInMilliseconds = currentDate - birthdate;
-                var ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+                var ageInYears = ageMilliseconds / (365 * 24 * 60 * 60 * 1000);
                 ageSpan.textContent = ageInYears.toFixed(8);
             }, 250);
 
