@@ -5,21 +5,33 @@
 </head>
 <body>
     <h1>Geburtstagsalter-Rechner</h1>
-    <label for="birthdate">Geburtsdatum:</label>
-    <input type="date" id="birthdate" oninput="updateAge()">
+    <form id="ageCalculatorForm" onsubmit="return false;">
+        <label for="birthdate">Geburtsdatum:</label>
+        <input type="date" id="birthdate">
+        <button id="calculateButton" onclick="calculateAge()">Berechnen</button>
+    </form>
     <p id="result" style="display: none;">Dein Alter ist: <span id="age">0.00000000</span></p>
 
     <script>
-        function updateAge() {
+        var intervalId; // Globale Variable, um das Intervall zu speichern
+
+        function calculateAge() {
             var birthdate = new Date(document.getElementById("birthdate").value);
-            var currentDate = new Date();
-            var ageInMilliseconds = currentDate - birthdate;
-            var ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
-            document.getElementById("age").textContent = ageInYears.toFixed(8);
-            
-            // Eingabefeld und Berechnen-Knopf ausblenden
-            document.getElementById("birthdate").style.display = "none";
-            document.getElementById("result").style.display = "block";
+            var ageSpan = document.getElementById("age");
+            intervalId = setInterval(function () {
+                var currentDate = new Date();
+                var ageInMilliseconds = currentDate - birthdate;
+                var ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+                ageSpan.textContent = ageInYears.toFixed(8);
+            }, 1000); // Aktualisieren Sie das Alter alle 1000 Millisekunden (1 Sekunde)
+
+            // Formular ausblenden
+            var form = document.getElementById("ageCalculatorForm");
+            form.style.display = "none";
+
+            // Ergebnis anzeigen
+            var result = document.getElementById("result");
+            result.style.display = "block";
         }
     </script>
 </body>
