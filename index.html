@@ -7,7 +7,7 @@
     <h1>Geburtstagsalter-Rechner</h1>
     <label for="birthdate">Geburtsdatum:</label>
     <input type="date" id="birthdate">
-    <button onclick="calculateAge()">Berechnen</button>
+    <button id="calculateButton" onclick="calculateAge()">Berechnen</button>
     <p id="result" style="display: none;">Dein Alter ist: <span id="age"></span></p>
 
     <script>
@@ -18,8 +18,11 @@
             var ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
             document.getElementById("age").textContent = ageInYears.toFixed(8);
             
-            // Eingabefeld ausblenden und Ergebnis anzeigen
+            // Eingabefeld und Berechnen-Knopf ausblenden
             document.getElementById("birthdate").style.display = "none";
+            document.getElementById("calculateButton").style.display = "none";
+            
+            // Ergebnis anzeigen
             document.getElementById("result").style.display = "block";
         }
     </script>
