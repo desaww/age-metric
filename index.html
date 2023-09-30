@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geburtstagsalter-Rechner</title>
+</head>
+<body>
+    <h1>Geburtstagsalter-Rechner</h1>
+    <label for="birthdate">Geburtsdatum:</label>
+    <input type="date" id="birthdate">
+    <button onclick="calculateAge()">Berechnen</button>
+    <p>Dein Alter ist: <span id="age"></span></p>
+
+    <script>
+        function calculateAge() {
+            var birthdate = new Date(document.getElementById("birthdate").value);
+            var currentDate = new Date();
+            var ageInMilliseconds = currentDate - birthdate;
+            var ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+            document.getElementById("age").textContent = ageInYears.toFixed(8);
+        }
+    </script>
+</body>
+</html>
