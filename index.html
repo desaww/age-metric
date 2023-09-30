@@ -12,14 +12,20 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
         h1 {
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 10px;
         }
 
         label {
@@ -42,9 +48,10 @@
         }
 
         p {
-            font-size: 20px;
-            display: none;
+            font-size: 28px;
+            font-weight: bold;
             margin-top: 20px;
+            display: none;
         }
     </style>
 </head>
@@ -55,7 +62,7 @@
         <input type="date" id="birthdate">
         <button id="calculateButton" onclick="calculateAge()">Berechnen</button>
     </form>
-    <p id="result">Dein Alter ist: <span id="age">0.00000000</span></p>
+    <p id="result"><span id="age" style="font-size: 36px; font-weight: bold;">0.00000000</span></p>
 
     <script>
         var intervalId;
@@ -68,7 +75,7 @@
                 var ageInMilliseconds = currentDate - birthdate;
                 var ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
                 ageSpan.textContent = ageInYears.toFixed(8);
-            }, 1000);
+            }, 250);
 
             var form = document.getElementById("ageCalculatorForm");
             form.style.display = "none";
